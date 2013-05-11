@@ -1,0 +1,15 @@
+[user]
+	name = Jake Bolewski
+	email = jakebolewski@gmail.com
+[core]
+	editor = gvim
+[merge]
+	tool = gvimdiff
+[alias]
+	co = checkout
+	br = branch
+	ci = commit
+	st = status
+	unstage = reset HEAD --
+	last = log -l HEAD
+	visual = !gitk

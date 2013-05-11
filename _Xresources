@@ -1,0 +1,48 @@
+#
+# ~/.bashrc
+#
+
+# If not running interactively, don't do anything
+[[ $- != *i* ]] && return
+
+PS1='[\u@\h \W]\$ '
+
+##########################
+# Exports 
+##########################
+export PATH=$PATH:~/.cabal/bin:~/.xmonad/bin
+
+# Defualt Editor 
+export EDITOR="vim"
+
+# Code syntax coloring in less
+export LESSOPEN="| /usr/bin/source-highlight-esc.sh %s"
+export LESS=' -R '
+
+#########################
+# Aliases 
+#########################
+alias ls='ls --color=auto'
+
+# colorize the output of ls 
+alias ls='ls --color=auto'
+eval $(dircolors -b)
+
+# colorize the output of grep 
+alias grep='grep -n --color=auto'
+
+alias pacman="pacman-color"
+alias wireless="wicd-curses"
+
+alias usb1="pmount /dev/sdb1"
+alias unusb1="pumount /dev/sdb1"
+alias usb2="pmount /dev/sdc1"
+alias unusb2="pumount /dev/sdc1"
+
+# Bind history completion to the up and down keys
+bind '"\e[A": history-search-backward'
+bind '"\e[B": history-search-forward'
+
+# Print the latest arch news 
+alias archnews="echo -e \"$(echo $(curl --silent http://www.archlinux.org/feeds/news/ | sed -e ':a;N;$!ba;s/\n/ /g') | sed -e 's/&lt;\/a&gt;/@/g' | sed -e 's/<title>/\\n\\n\\n\\t:: \\e[01;31m/g' -e 's/<\/title>/\\e[00m ::\\n/g' | sed -e 's/<link>/ [ \\e[01;36m/g' -e 's/<\/link>/\\e[00m ]/g' | sed -e 's/<description>/\\n\\n\\e[00;37m/g' -e 's/<\/description>/\\e[00m\\n\\n/g' | sed -e 's/&lt;p&gt;/\n/g' | sed -e 's/&lt;a href\=\"\([^\"]*\)\"&gt;\([^@]*\)@/\\e[01;32m\2\\e[00;37m \\e[01;34m[ \\e[01;35m\1\\e[00;37m\\e[01;34m ]\\e[00;37m/g' | sed -e 's/&lt;li&gt;/\n \\e[01;34m*\\e[00;37m /g' | sed -e 's/<[^>]*>/ /g' | sed -e 's/&lt;.*&gt;//g')\n\n\""
+
